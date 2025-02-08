@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "bot-trader-pancakeswap"
+version = "0.1.0"
+description = ""
+authors = ["Govinda <govinda777@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+web3 = "^7.8.0"
+aiohttp = "^3.11.12"
+pydantic-settings = "^2.7.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-asyncio = "^0.25.3"
+pre-commit = "^4.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
