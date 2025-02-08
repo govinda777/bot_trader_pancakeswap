@@ -1,16 +1,13 @@
-
+import os
 import sys
 import pytest
 from dotenv import load_dotenv
-from pydantic_settings import BaseSettings
-import os
+from environment import ENV_SETTINGS
 
 load_dotenv()
-
-from environment import EnvironmentSettings
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 @pytest.fixture(scope="session")
 def env_settings():
-    return EnvironmentSettings()
+    return ENV_SETTINGS
