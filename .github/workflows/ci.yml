@@ -43,5 +43,12 @@ jobs:
         run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
 
       - name: Run tests
+        env:  # Configurar as variáveis de ambiente para acesso nos testes
+          RPC_URL: ${{ vars.RPC_URL }}  # Variável normal
+          CHAIN_ID: ${{ vars.CHAIN_ID }}  # Variável normal
+          PANCAKESWAP_ROUTER_ADDRESS: ${{ vars.PANCAKESWAP_ROUTER_ADDRESS }}  # Variável normal
+          PANCAKESWAP_ROUTER_ABI: ${{ vars.PANCAKESWAP_ROUTER_ABI }}  # Variável normal
+          WALLET_ADDRESS: ${{ secrets.WALLET_ADDRESS }}  # Secret
+          WALLET_PRIVATE_KEY: ${{ secrets.WALLET_PRIVATE_KEY }}  # Secret
         run: |
           poetry run pytest -v
