@@ -1,0 +1,1 @@
+# __init__.py (dentro de bot_trader_pancakeswap)

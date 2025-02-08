@@ -6,6 +6,8 @@ authors = ["Govinda <govinda777@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 
+package-mode = false
+
 # Definindo o pacote
 packages = [
     { include = "bot_trader_pancakeswap" }
