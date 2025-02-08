@@ -4,6 +4,9 @@ import pytest
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 import os
+
+load_dotenv()
+
 from environment import EnvironmentSettings
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
