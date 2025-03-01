@@ -2,7 +2,7 @@ import json
 import pytest
 from web3 import Web3
 from environment import ENV_SETTINGS
-from pancakeswap_router_contract_repository import PancakeSwapRouterContractRepository
+from src.repository.pancakeswap_router_contract_repository import PancakeSwapRouterContractRepository
 
 @pytest.fixture
 def web3():
@@ -24,12 +24,12 @@ def pancake_swap_repository(web3) -> PancakeSwapRouterContractRepository:
     )
 
 def test_repository_initialization(pancake_swap_repository: PancakeSwapRouterContractRepository):
-    assert pancake_swap_repository.pancakeswap_router_contract is not None
+    assert pancake_swap_repository.contract is not None
 
 def test_contract_address(pancake_swap_repository: PancakeSwapRouterContractRepository):
     expected_address = ENV_SETTINGS.PANCAKESWAP_ROUTER_ADDRESS
     assert pancake_swap_repository.web3.is_checksum_address(expected_address)
-    assert pancake_swap_repository.pancakeswap_router_contract.address.lower() == expected_address.lower()
+    assert pancake_swap_repository.contract.address.lower() == expected_address.lower()
 
 def test_web3_isConnected(pancake_swap_repository: PancakeSwapRouterContractRepository):
     assert pancake_swap_repository.web3.is_connected()

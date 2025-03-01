@@ -11,8 +11,8 @@ from web3.contract import (
 )
 
 from web3 import Web3
-from environment import ENV_SETTINGS
-from pancakeswap_router_contract_repository import PancakeSwapRouterContractRepository
+from src.environment import ENV_SETTINGS
+from src.repository.pancakeswap_router_contract_repository import PancakeSwapRouterContractRepository
 
 class TestPancakeSwapRouterContractRepository:
 
