@@ -14,6 +14,10 @@ class EnvironmentSettings(BaseSettings):
     PRICE_API_KEY: str = os.getenv("PRICE_API_KEY", "")
     PRICE_API_VERSION: str = os.getenv("PRICE_API_VERSION", "v2")
     
+    CHAIN_ID_MAINNET: int =  os.getenv("CHAIN_ID_MAINNET", 0)
+    TOKEN_WBNB_ADDRESS_MAINNET: str =  os.getenv("TOKEN_WBNB_ADDRESS_MAINNET", "")
+    TOKEN_CAKE_ADDRESS_MAINNET: str =  os.getenv("TOKEN_CAKE_ADDRESS_MAINNET", "")
+    
     class Config:
         env_file = '.env'
 

@@ -21,7 +21,13 @@ class PricingRepository:
         self.price_api_key = price_api_key
         self.price_api_version = price_api_version
     
-    async def get_price(self, chain_id: int, sell_token: str, buy_token: str, sell_amount: int, **kwargs):
+    async def get_price(self, 
+                        sell_amount: int, 
+                        chain_id: int = ENV_SETTINGS.CHAIN_ID_MAINNET, 
+                        sell_token: str = ENV_SETTINGS.TOKEN_WBNB_ADDRESS_MAINNET, 
+                        buy_token: str = ENV_SETTINGS.TOKEN_CAKE_ADDRESS_MAINNET, 
+                        **kwargs):
+        
         url = f"{self.price_url}/swap/permit2/price"
         
         params = {

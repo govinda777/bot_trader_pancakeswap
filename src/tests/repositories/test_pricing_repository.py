@@ -26,10 +26,20 @@ async def test_get_price_integration():
     cake_address = "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"  # Endereço de CAKE (Mainnet)
     sell_amount = 100000000  # Exemplo: 0.1 WBNB (ajuste conforme precisão desejada)
 
-    # Parâmetros opcionais
+    # Parâmetros opcionais que podem personalizar como a troca é executada na API
     optional_params = {
+        # "taker": O endereço do usuário que está executando a operação de swap.
+        # Isso pode ser usado para análises de taxas ou para rotas específicas que exigem um endereço de taker.
         "taker": "0x70a9f34f9b34c64957b9c401a97bfed35b95049e",
+
+        # "slippageBps": Define o slippage máximo permitido para a operação, em basis points (bps).
+        # 100 bps corresponde a 1% de slippage. Se o preço mudar mais que essa porcentagem durante a execução,
+        # a operação pode ser revertida para evitar custos inesperados.
         "slippageBps": "100",
+
+        # "sellEntireBalance": Um booleano que indica se o usuário deseja vender todo o saldo do token vendido.
+        # Configurado como "false" aqui, o que significa que apenas a quantidade especificada em sell_amount é vendida.
+        # Se configurado para "true", ignora o sellAmount e tenta vender todo o saldo do token presente na carteira especificada.
         "sellEntireBalance": "false"
     }
 

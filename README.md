@@ -28,6 +28,10 @@ Ele foi baseado na aula do Professor Fábio Santos, que aborda conceitos de prog
 
 [Video](https://youtu.be/NFAzz-kX3Z4?si=WJiBLGWRgiBmSO2A)
 
+# Arquitetura
+
+![Arquitetura](./assets/arq.jpeg)
+
 ## Objetivos
 
 1. Um bot capaz de realizar “swaps” (compra e venda) de tokens na PancakeSwap.  
