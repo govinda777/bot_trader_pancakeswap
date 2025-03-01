@@ -23,3 +23,18 @@ class PancakeSwapRouterContractRepository:
             abi=contract_abi
         )
         
+    def approve(self, spender_address, amount_in_wei, chain_id, nonce, gas=200000, gas_price='100'):
+        function_call = self.contract.functions.approve(
+            spender_address, 
+            amount_in_wei
+        )
+        
+        transaction_params = {
+            'chainId': chain_id,
+            'gas': gas,
+            'gasPrice': self.contract.web3.toWei(gas_price, 'gwei'),
+            'nonce': nonce,
+        }
+        
+        return self.build_transaction(function_call, transaction_params)
+        
