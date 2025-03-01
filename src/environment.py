@@ -10,6 +10,9 @@ class EnvironmentSettings(BaseSettings):
     PANCAKESWAP_ROUTER_ABI: str = os.getenv("PANCAKESWAP_ROUTER_ABI", "{}")
     TOKEN_WBNB_ADDRESS: str = os.getenv("TOKEN_WBNB_ADDRESS", "default_address")
     TOKEN_WBNB_ABI: str = os.getenv("TOKEN_WBNB_ABI", "{}")
+    PRICE_URL: str = os.getenv("PRICE_URL", "default_price_url")
+    PRICE_API_KEY: str = os.getenv("PRICE_API_KEY", "")
+    PRICE_API_VERSION: str = os.getenv("PRICE_API_VERSION", "v2")
     
     class Config:
         env_file = '.env'

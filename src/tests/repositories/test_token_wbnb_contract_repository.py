@@ -4,7 +4,7 @@ from unittest.mock import patch, MagicMock
 from web3.contract import Contract
 from web3 import Web3
 from src.environment import ENV_SETTINGS
-from src.repository.token_wbnb_contract_repository import TokenWbnbContractRepository
+from src.repositories.token_wbnb_contract_repository import TokenWbnbContractRepository
 
 class TestTokenWbnbContractRepository:
     

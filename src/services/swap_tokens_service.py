@@ -5,9 +5,9 @@ from web3.contract import (
     ContractCaller,
 )
 
-from environment import ENV_SETTINGS
-from src.repository.pancakeswap_router_contract_repository import PancakeSwapRouterContractRepository
-from src.repository.token_wbnb_contract_repository import TokenWbnbContractRepository
+from src.environment import ENV_SETTINGS
+from src.repositories.pancakeswap_router_contract_repository import PancakeSwapRouterContractRepository
+from src.repositories.token_wbnb_contract_repository import TokenWbnbContractRepository
 from web3_facade import Web3Facade
 
 class SwapTokensService:

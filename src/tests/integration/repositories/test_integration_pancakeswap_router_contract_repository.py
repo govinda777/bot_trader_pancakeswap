@@ -2,7 +2,7 @@ import json
 import pytest
 from web3 import Web3
 from src.environment import ENV_SETTINGS
-from src.repository.pancakeswap_router_contract_repository import PancakeSwapRouterContractRepository
+from src.repositories.pancakeswap_router_contract_repository import PancakeSwapRouterContractRepository
 
 @pytest.fixture
 def web3():

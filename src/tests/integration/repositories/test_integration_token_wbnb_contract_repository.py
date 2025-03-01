@@ -2,7 +2,7 @@ import json
 import pytest
 from web3 import Web3
 from src.environment import ENV_SETTINGS
-from src.repository.token_wbnb_contract_repository import TokenWbnbContractRepository
+from src.repositories.token_wbnb_contract_repository import TokenWbnbContractRepository
 
 @pytest.fixture
 def web3():
