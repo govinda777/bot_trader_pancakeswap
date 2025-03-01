@@ -25,12 +25,15 @@ class TokenWbnbContractRepository:
             abi=contract_abi
         )
     
-    def approve(self, spender_address, amount_in_wei, chain_id, nonce, gas=200000, gas_price='100'):
-        return self.contract.approve(
+    def approve(self, spender_address, amount_in_wei, chain_id, gas, gas_price, nonce):
+        transaction = self.contract.functions.approve(
             spender_address, 
-            amount_in_wei, 
-            chain_id, 
-            nonce, 
-            gas, 
-            gas_price
-        )
+            amount_in_wei
+        ).buildTransaction({
+            'chainId': chain_id,
+            'gas': gas,
+            'gasPrice': gas_price,
+            'nonce': nonce,
+        })
+        
+        return transaction

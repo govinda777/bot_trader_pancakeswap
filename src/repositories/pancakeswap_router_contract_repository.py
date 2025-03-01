@@ -22,19 +22,29 @@ class PancakeSwapRouterContractRepository:
             address=pancakeswap_router_address, 
             abi=contract_abi
         )
-        
-    def approve(self, spender_address, amount_in_wei, chain_id, nonce, gas=200000, gas_price='100'):
-        function_call = self.contract.functions.approve(
-            spender_address, 
-            amount_in_wei
-        )
-        
-        transaction_params = {
-            'chainId': chain_id,
+    
+    def swap_exact_tokens_for_tokens(
+        self,
+        amount_in,
+        amount_out_min,
+        path,
+        to,
+        deadline,
+        chainId,
+        gas,
+        gasPrice
+    ): 
+        transaction = self.contract.functions.swapExactTokensForTokens(
+            amount_in,
+            amount_out_min,
+            path,
+            to,
+            deadline
+        ).buildTransaction({
+            'chainId': chainId,
             'gas': gas,
-            'gasPrice': self.contract.web3.toWei(gas_price, 'gwei'),
-            'nonce': nonce,
-        }
+            'gasPrice': gasPrice,
+        })
         
-        return self.build_transaction(function_call, transaction_params)
+        return transaction
         

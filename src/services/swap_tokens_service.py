@@ -44,7 +44,9 @@ class SwapTokensService:
             path,
             to,
             deadline,
-            self.chain_id
+            self.chain_id,
+            200000,
+            self.web3.toWei('50', 'gwei')
         )
         
         signed_transaction = self.web3.eth.account.signTransaction(transaction, self.private_key)
@@ -60,6 +62,8 @@ class SwapTokensService:
             spender_address, 
             amount_in_wei,
             self.chain_id,
+            200000,
+            self.web3.toWei('100', 'gwei'),
             nonce + 1
         )
         
