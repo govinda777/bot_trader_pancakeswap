@@ -18,7 +18,9 @@ class TokenWbnbContractRepository:
         self.web3 = web3
         contract_abi = json.loads(token_wbnb_abi)
         
+        token_wbnb_address = Web3.to_checksum_address(ENV_SETTINGS.TOKEN_WBNB_ADDRESS)
+        
         self.contract: Contract = self.web3.eth.contract(
             address=token_wbnb_address,
-            abu=contract_abi
+            abi=contract_abi
         )
