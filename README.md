@@ -127,6 +127,140 @@ curl -X 'GET' \
   -H '0x-version: v2'
 ```
 
+Chamada real:
+
+```
+curl -X 'GET' \
+  'https://api.0x.org/swap/permit2/price?chainId=56&buyToken=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&sellToken=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c&sellAmount=100000000&taker=0x70a9f34f9b34c64957b9c401a97bfed35b95049e&slippageBps=100&sellEntireBalance=false' \
+  -H 'accept: application/json' \
+  -H '0x-api-key: SEU_API_KEY_AQUI' \
+  -H '0x-version: v2'
+````
+
+<details>
+  <summary>Response</summary>
+  ```
+{
+  "blockNumber": "47089071",
+  "buyAmount": "31363692677",
+  "buyToken": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+  "fees": {
+    "integratorFee": null,
+    "zeroExFee": {
+      "amount": "150000",
+      "token": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "type": "volume"
+    },
+    "gasFee": null
+  },
+  "gas": "1017825",
+  "gasPrice": "1000000000",
+  "issues": {
+    "allowance": {
+      "actual": "0",
+      "spender": "0x000000000022d473030f116ddee9f6b43ac78ba3"
+    },
+    "balance": {
+      "token": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "actual": "0",
+      "expected": "100000000"
+    },
+    "simulationIncomplete": false,
+    "invalidSourcesPassed": []
+  },
+  "liquidityAvailable": true,
+  "minBuyAmount": "31050053100",
+  "route": {
+    "fills": [
+      {
+        "from": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "to": "0x55d398326f99059ff775485246999027b3197955",
+        "source": "Uniswap_V4",
+        "proportionBps": "9993"
+      },
+      {
+        "from": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "to": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "source": "PancakeSwap_V3",
+        "proportionBps": "7"
+      },
+      {
+        "from": "0x55d398326f99059ff775485246999027b3197955",
+        "to": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "source": "Uniswap_V4",
+        "proportionBps": "5759"
+      },
+      {
+        "from": "0x55d398326f99059ff775485246999027b3197955",
+        "to": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "source": "Maverick",
+        "proportionBps": "4234"
+      },
+      {
+        "from": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "to": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "source": "Thena",
+        "proportionBps": "10000"
+      },
+      {
+        "from": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "to": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "source": "ApeSwap",
+        "proportionBps": "10000"
+      },
+      {
+        "from": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "to": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+        "source": "SushiSwap",
+        "proportionBps": "10000"
+      }
+    ],
+    "tokens": [
+      {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "symbol": "WBNB"
+      },
+      {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "symbol": "USDT"
+      },
+      {
+        "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "symbol": "USDC"
+      },
+      {
+        "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "symbol": "ETH"
+      },
+      {
+        "address": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "symbol": "BUSD"
+      },
+      {
+        "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+        "symbol": "Cake"
+      }
+    ]
+  },
+  "sellAmount": "100000000",
+  "sellToken": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+  "tokenMetadata": {
+    "buyToken": {
+      "buyTaxBps": "0",
+      "sellTaxBps": "0"
+    },
+    "sellToken": {
+      "buyTaxBps": "0",
+      "sellTaxBps": "0"
+    }
+  },
+  "totalNetworkFee": "1017825000000000",
+  "zid": "0x365883c255a225167c5fae25"
+}
+```
+</details>
+
+
 Neste exemplo:
 - “sellAmount” = 1000000000000000000 representa 1.0 WBNB (pois WBNB tem 18 casas decimais).  
 - A resposta retornará, dentre outros campos, “buyAmount”, indicando quantos CAKE você receberá ao vender 1 WBNB.
