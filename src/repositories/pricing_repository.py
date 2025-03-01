@@ -12,7 +12,7 @@ class HttpClient:
 
 class PricingRepository:
     def __init__(self, 
-                 http_client: HttpClient,
+                 http_client: HttpClient = HttpClient(),
                  price_url: str = ENV_SETTINGS.PRICE_URL,
                  price_api_key: str = ENV_SETTINGS.PRICE_API_KEY,
                  price_api_version: str = ENV_SETTINGS.PRICE_API_VERSION):

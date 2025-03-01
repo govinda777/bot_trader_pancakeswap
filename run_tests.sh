@@ -1,22 +1,14 @@
 #!/bin/bash
-set -x
+set -e  # Termina o script se um comando falhar
+set -x  # Exibe cada comando antes de executá-lo
 
-# Adiciona o diretório atual ao PYTHONPATH
-export PYTHONPATH=$(pwd)
+# Nome da imagem Docker
+IMAGE_NAME="bot-trader-pancakeswap:latest"
 
-# Ativa o ambiente virtual
-source $(poetry env info --path)/bin/activate
+# Build da imagem Docker
+docker build -t $IMAGE_NAME .
 
-# Carrega as variáveis de ambiente
-source .env  # Carregando manualmente o .env (opcional)
+# Executa os testes dentro de um novo container usando a imagem criada
+docker run --rm $IMAGE_NAME
 
-# Instala as dependências.
-poetry install
-
-# Executa os testes
-poetry run pytest
-
-# Verifica os valores carregados
-echo "RPC_URL: $RPC_URL"
-echo "CHAIN_ID: $CHAIN_ID"
-echo "PANCAKESWAP_ROUTER_ADDRESS: $PANCAKESWAP_ROUTER_ADDRESS"
+# Nota: o --rm garante que o container seja removido após a execução, mantendo o ambiente limpo

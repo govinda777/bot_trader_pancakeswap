@@ -106,6 +106,26 @@ Ele foi baseado na aula do Professor Fábio Santos, que aborda conceitos de prog
 
 4. O bot iniciará um loop infinito, monitorando o preço do token. Caso o preço atinja o limiar definido, ele executará as transações de aprovação e swap.
 
+## Estratégia de Investimento
+
+O bot implementa uma estratégia de negociação (“trading”) simples, do tipo “buy low, sell high” (comprar barato, vender caro), baseada em limiares (thresholds) de preço. A mecânica funciona da seguinte forma:
+
+1. Definimos dois parâmetros no código:  
+   - SELL_THRESHOLD (limiar de venda) → Se o preço do token ultrapassar esse valor, o bot considera que está “caro” e vende.  
+   - BUY_THRESHOLD (limiar de compra) → Se o preço do token cair abaixo desse valor, o bot considera que está “barato” e compra.
+
+2. Durante o loop principal, o bot consulta continuamente o preço do par de tokens (por exemplo, WBNB ↔ CAKE) utilizando a API do 0x.  
+   - Através dos valores de “buyAmount” e “sellAmount” retornados, calcula qual é o preço atual desse par.  
+
+3. Em cada iteração, o bot compara o preço atual com os limiares de compra e venda.  
+   - Se price ≥ SELL_THRESHOLD, ele executa uma transação de venda do token em uso (por exemplo, vende WBNB para obter CAKE).  
+   - Se price ≤ BUY_THRESHOLD, ele executa uma transação de compra (por exemplo, compra WBNB usando CAKE).  
+   - Caso o preço não atinja nenhum dos limiares, o bot não faz nada e apenas aguarda até a próxima checagem.  
+
+4. Como se trata de uma estratégia extremamente simples, não há análise de volume, indicadores técnicos avançados, ou notícias de mercado. Portanto, é recomendada apenas para fins educacionais e de teste. No ambiente real, esse tipo de abordagem pode não ser suficiente, dada a volatilidade do mercado cripto.
+
+5. Você pode ajustar os valores de SELL_THRESHOLD e BUY_THRESHOLD conforme sua preferência ou testar diferentes estratégias (por exemplo, incluir análise de indicadores técnicos, médias móveis, bandas de Bollinger etc.) para aprimorar a tomada de decisão do bot.
+
 ## Consulta e Cálculo de Preço (API 0x)
 
 Nesta seção, explicamos como o bot obtém o preço de um token por meio da API do 0x, como calculamos a cotação entre WBNB e CAKE, e como definimos o limiar (“linear”) de compra ou de venda.

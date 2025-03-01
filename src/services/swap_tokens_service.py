@@ -21,7 +21,7 @@ class SwapTokensService:
     ):
         self.web3 = web3
         self.pancakeswap_router_contract = pancakeswap_router_contract_repository.contract
-        self.token_wbnb_contract_repository = token_wbnb_contract_repository
+        self.token_wbnb_contract_repository = token_wbnb_contract_repository.contract
         self.chain_id = chain_id
         self.wallet_address = wallet_address
         self.private_key = private_key

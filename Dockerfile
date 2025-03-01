@@ -16,8 +16,8 @@ COPY . .
 # Adiciona o diretório do projeto ao PYTHONPATH
 ENV PYTHONPATH=/app
 
-# Instala as dependências do projeto
-RUN poetry install --no-root
+# Instala as dependências do projeto, incluindo as de desenvolvimento
+RUN poetry install --no-root --with dev
 
 # Comando padrão para rodar os testes
 CMD ["poetry", "run", "pytest"]
