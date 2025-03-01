@@ -60,9 +60,10 @@ class SwapTokensService:
         amount_in_wei = self.web3.toWei(amount, 'ether')
         nonce = self.web3.eth.getTransactionCount(self.wallet_address)
 
-        transaction = self.pancakeswap_router_contract.functions.approve(
+        transaction = self.token_wbnb_contract_repository.functions.approve(
             spender_address, 
-            amount_in_wei).buildTransaction({
+            amount_in_wei
+        ).buildTransaction({
             'chainId': self.chain_id,
             'gas': 200000,
             'gasPrice': self.web3.toWei('100', 'gwei'),
