@@ -13,12 +13,27 @@ pip install web3
 https://testnet.bscscan.com/address/0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3#code
 ```
 
+> Doc
+
+https://docs.pancakeswap.finance/developers/smart-contracts/pancakeswap-exchange/v2-contracts/router-v2?utm_source=chatgpt.com
+
 ## WBNB Token
 
 ```
-https://testnet.bscscan.com/address/0x15c9e651b5971feb66e19fe9e897be6bdc3e841a#code
+https://testnet.bscscan.com/address/0xae13d989dac2f0debff460ac112a837c89baa7cd#code
 ```
 
+## CAKE Token
+
+```
+https://testnet.bscscan.com/address/0xfa60d973f7642b748046464e165a65b7323b0dee#code
+```
+---
+
+Exemplo de transação com erro (execução pelo py): https://testnet.bscscan.com/tx/0xfff6a9b713291032d5b859bf3304b11383ed16fd452931be2c1f6e6923dd652d
+
+
+Exemplo de transação com sucesso (execução pela UI): https://testnet.bscscan.com/tx/0x2177e01dc8589b6a3573a007e65433670e672fe1692abddc468dc2abd3bb10a1
 ---
 
 # Bot Trader de Tokens para PancakeSwap

@@ -1,6 +1,6 @@
 #!/bin/bash
-set -e  # Termina o script se um comando falhar
-set -x  # Exibe cada comando antes de executá-lo
+# set -e  # Termina o script se um comando falhar
+# set -x  # Exibe cada comando antes de executá-lo
 
 # Nome da imagem Docker
 IMAGE_NAME="bot-trader-pancakeswap:latest"

@@ -32,7 +32,8 @@ class PancakeSwapRouterContractRepository:
         deadline,
         chainId,
         gas,
-        gasPrice
+        gasPrice,
+        nonce
     ): 
         transaction = self.contract.functions.swapExactTokensForTokens(
             amount_in,
@@ -40,11 +41,14 @@ class PancakeSwapRouterContractRepository:
             path,
             to,
             deadline
-        ).buildTransaction({
+        )
+        
+        built_transaction = transaction.build_transaction({
             'chainId': chainId,
             'gas': gas,
             'gasPrice': gasPrice,
+            'nonce': nonce
         })
         
-        return transaction
+        return built_transaction
         

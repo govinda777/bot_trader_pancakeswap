@@ -4,6 +4,10 @@ from web3.contract import (
     Contract,
     ContractCaller,
 )
+from eth_account.datastructures import (
+    SignedMessage,
+    SignedTransaction,
+)
 
 from src.environment import ENV_SETTINGS
 from src.repositories.pancakeswap_router_contract_repository import PancakeSwapRouterContractRepository
@@ -46,17 +50,17 @@ class SwapTokensService:
             deadline,
             self.chain_id,
             200000,
-            self.web3.toWei('50', 'gwei')
+            self.web3.to_wei('50', 'gwei')
         )
         
-        signed_transaction = self.web3.eth.account.signTransaction(transaction, self.private_key)
-        tx_hash = self.web3.eth.sendRawTransaction(signed_transaction.rawTransaction)
+        signed_transaction: SignedTransaction = self.web3.eth.account.sign_transaction(transaction, self.private_key)
+        tx_hash = self.web3.eth.send_raw_transaction(signed_transaction.raw_transaction)
 
         return tx_hash.hex()
         
     def approve_spending(self, spender_address, amount) -> str:
-        amount_in_wei = self.web3.toWei(amount, 'ether')
-        nonce = self.web3.eth.getTransactionCount(self.wallet_address)
+        amount_in_wei = self.web3.to_wei(amount, 'ether')
+        nonce = self.web3.eth.get_transaction_count(self.wallet_address)
 
         transaction = self.token_wbnb_contract_repository.approve(
             spender_address, 
@@ -67,7 +71,7 @@ class SwapTokensService:
             nonce + 1
         )
         
-        signed_transaction = self.web3.eth.account.signTransaction(transaction, self.private_key)
-        tx_hash = self.web3.eth.sendRawTransaction(signed_transaction.rawTransaction)
+        signed_transaction: SignedTransaction = self.web3.eth.account.sign_transaction(transaction, self.private_key)
+        tx_hash = self.web3.eth.send_raw_transaction(signed_transaction.raw_transaction)
         
         return tx_hash.hex()
